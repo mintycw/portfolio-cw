@@ -1,5 +1,5 @@
 reveal();
-window.addEventListener("scroll", reveal);
+window.addEventListener("mousemove", reveal);
 
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
@@ -30,7 +30,7 @@ function createImageArray() {
 function createImageElement() {
     const parentDiv = document.getElementById('about-me-pictures');
     const newImg = document.createElement('img');
-    newImg.classList.add('reveal', 'fade-picture');
+    newImg.classList.add('reveal', 'fade-right');
     newImg.id = 'me-picture';
     parentDiv.appendChild(newImg);
     return newImg;
@@ -43,3 +43,34 @@ function nextImage(e = null) {
     }
     imgElement.src = array[Math.floor(Math.random() * array.length)];
 }
+
+const slider = document.querySelector('.items');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('down');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('down');
+});
+
+slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('down');
+});
+
+slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3; //scroll-fast
+    slider.scrollLeft = scrollLeft - walk;
+    console.log(walk);
+});

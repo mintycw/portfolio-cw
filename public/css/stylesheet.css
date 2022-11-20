@@ -28,13 +28,10 @@ div {
 body {
     margin: 0;
     background-color: black;
-    display: flex;
-    flex-direction: row;
-    overflow-y: hidden;
-    overflow-x: scroll;
+    color: white;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    color: white;
+    overflow-y: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -47,6 +44,25 @@ section {
 
 section:nth-of-type(2) {
     width: calc(100vw - var(--nav-width));
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    user-select: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.items.down {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.item {
+    display: inline-block;
 }
 
 a, ul {
@@ -109,11 +125,6 @@ a, ul {
 
 .active.fade-opacity {
     animation: fade-opacity 2s ease-in;
-}
-
-.active.fade-picture {
-    animation-delay: 1.5s;
-    animation: fade-right 1s ease-in;
 }
 
 .active.fade-main{
@@ -324,6 +335,7 @@ nav {
     writing-mode: vertical-lr;
     text-orientation: upright;
     text-transform: uppercase;
+    padding-right: 2%;
 }
 
 .about-me-picture {
@@ -338,4 +350,52 @@ nav {
 
 #me-picture:hover {
     cursor: pointer;
+}
+
+.about-me-skills {
+    display: flex;
+    flex-direction: row;
+}
+
+.about-me-skills-showcase {
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.skills-container-one {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.skills-container-two {
+    grid-area: 1 / 2 / 2 / 3;  
+}
+
+.skills-container-three {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.skills-container-four {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.one-stars {
+    color: #CD7F32;
+    font-weight: bold;
+    margin: 0.5vw;
+}
+
+.two-stars {
+    color: #C0C0C0;
+    font-weight: bold;
+    margin: 0.5vw;
+}
+
+.three-stars {
+    color: yellow;
+    font-weight: bold;
+    margin: 0.25vw;
 }

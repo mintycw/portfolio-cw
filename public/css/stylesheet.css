@@ -313,11 +313,17 @@ nav {
     flex-direction: row;
 }
 
+.about-me-skills {
+    grid-area: 1 / 2 / 4 / 3;
+    flex-direction: row;
+}
+
 .about-me-text-header {
     color: red;
     margin: 15px;
     writing-mode: vertical-lr;
     text-orientation: upright;
+    text-transform: uppercase;
 }
 
 .about-me-picture {
@@ -328,4 +334,8 @@ nav {
     object-fit: contain;
     width: 20vw;
     border-radius: 25px;
+}
+
+#me-picture:hover {
+    cursor: pointer;
 }

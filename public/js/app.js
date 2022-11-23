@@ -1,17 +1,22 @@
 reveal();
+window.addEventListener("scroll", reveal);
 window.addEventListener("mousemove", reveal);
 
 function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
+    const reveals = document.querySelectorAll(".reveal");
     
-    for (var i = 0; i < reveals.length; i++) {
-        var windowWidth = window.innerWidth;
-        var elementRight = reveals[i].getBoundingClientRect().right;
+    for (let i = 0; i < reveals.length; i++) {
+        const windowWidth = window.innerWidth;
+        const elementRight = reveals[i].getBoundingClientRect().right;
         
         if (elementRight < windowWidth) {
             reveals[i].classList.add("active");
         }
     }
+}
+
+function waitReveal(ms) {
+    setTimeout(reveal(), ms);
 }
 
 const imgArray = createImageArray();
@@ -70,7 +75,6 @@ slider.addEventListener('mousemove', (e) => {
     if(!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 3; //scroll-fast
+    const walk = (x - startX) * 1;
     slider.scrollLeft = scrollLeft - walk;
-    console.log(walk);
 });

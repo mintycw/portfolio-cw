@@ -450,7 +450,6 @@ nav {
     writing-mode: vertical-lr;
     text-orientation: upright;
     text-transform: uppercase;
-    padding-right: 2%;
     text-align: center;
 }
 
@@ -600,6 +599,10 @@ nav {
     align-items: center;
     flex-direction: column;
     color: black;
+}
+
+.here-a {
+    font-weight: bold;
 }
 
 /* .contact-container {

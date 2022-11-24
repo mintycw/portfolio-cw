@@ -7,16 +7,13 @@ function reveal() {
     
     for (let i = 0; i < reveals.length; i++) {
         const windowWidth = window.innerWidth;
-        const elementRight = reveals[i].getBoundingClientRect().right;
+        const elementLeft = reveals[i].getBoundingClientRect().left;
         
-        if (elementRight < windowWidth) {
+        if (elementLeft < windowWidth) {
             reveals[i].classList.add("active");
+            console.log("active");
         }
     }
-}
-
-function waitReveal(ms) {
-    setTimeout(reveal(), ms);
 }
 
 const imgArray = createImageArray();
@@ -78,3 +75,43 @@ slider.addEventListener('mousemove', (e) => {
     const walk = (x - startX) * 1;
     slider.scrollLeft = scrollLeft - walk;
 });
+
+const openModalButtons = document.querySelectorAll('[data-modal-target]');
+const closeModalButtons = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
+
+openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelector(button.dataset.modalTarget);
+        openModal(modal);
+    })
+});
+
+closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        closeModal(modal);
+    })
+});
+
+function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('on');
+    overlay.classList.add('on');
+}
+
+function closeModal(modal) {
+    if (modal == null) return;
+    modal.classList.remove('on');
+    overlay.classList.remove('on');
+}
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.key == 'Escape') {
+        const modals = document.querySelectorAll('.modal.on');
+        modals.forEach(modal => {
+        closeModal(modal);
+        })
+    }
+};

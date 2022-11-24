@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/stylesheet.css">
-    <script async src="public/js/app.js"></script>
+    <script defer src="public/js/app.js"></script>
     <title>Michael Xinyu Zhang</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
                 <nav class="reveal fade-left active">
                     <ul class="nav-list text-sideways margin">
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                     <p class="chinese nav-text-cn margin">张鑫宇/迈克</p>
                 </nav>
@@ -95,40 +95,107 @@
                 </div>
             </div>
         </section>
-        <section class="reveal fade-color" id="projects">
+        <section class="reveal fade-project" id="projects">
             <div class="projects-container">
                 <div class="projects-flex">
                     <h2 class="projects-header">Projects</h2>
                     <div class="projects-grid">
-                        <div class="projects-container">
-                            <div class="project-content-container">
+                        <div class="projects-container reveal fade-top">
+                            <button data-modal-target="#modal-pong" class="project-content-container">
                                 <img class="project-img" src="public/img/pong-gameplay.png" alt="Pong Mainscreen">
                                 <p class="project-header">Pong! <i class="fa-solid fa-table-tennis-paddle-ball"></i></p>
-                                <!-- <p>One of my first school projects was Pong.</p>
-                                <p>We were given four weeks to remake Pong using C#.</p>
-                                <p>It was my first time with Object-Orientated Programming!</p> -->
-                            </div>
+                            </button>
                         </div>
-                        <div class="projects-container">
-                            <div class="project-content-container">
+                        <div class="projects-container reveal fade-top">
+                            <button data-modal-target="#modal-dungeon-crawler" class="project-content-container">
                                 <img class="project-img" src="public/img/dungeoncrawler-image.png" alt="Zelda">
                                 <p class="project-header">Zelda Remake <i class="fa-solid fa-dungeon"></i></p>
-                            </div>
+                            </button>
                         </div>
-                        <div class="projects-container">
-                            <div class="project-content-container">
+                        <div class="projects-container reveal fade-top">
+                            <button data-modal-target="#modal-escape-room" class="project-content-container">
                                 <img class="project-img" src="public/img/escaperoom-image.png" alt="Escape Room">
                                 <p class="project-header">Escape Room <i class="fa-solid fa-person-running"></i></p>
-                            </div>
+                            </button>
                         </div>
-                        <div class="projects-container">
-                            <div class="project-content-container">
+                        <div class="projects-container reveal fade-bottom">
+                            <button data-modal-target="#modal-twinstick" class="project-content-container">
                                 <img class="project-img" src="public/img/catinator-poster.png" alt="Catinator Poster">
                                 <p class="project-header">Catinator <i class="fa-solid fa-gun"></i></p>
+                            </button>
+                        </div>
+                        <div class="modal" id="modal-pong">
+                            <div class="modal-header">
+                                <div class="title">Pong!</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure porro tenetur placeat eum, eos voluptates molestiae at dolor maiores et iste molestias incidunt nam eligendi distinctio temporibus voluptatibus similique aperiam.
                             </div>
                         </div>
+                        <div class="modal" id="modal-dungeon-crawler">
+                            <div class="modal-header">
+                                <div class="title">Zelda Remake</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure porro tenetur placeat eum, eos voluptates molestiae at dolor maiores et iste molestias incidunt nam eligendi distinctio temporibus voluptatibus similique aperiam.
+                            </div>
+                        </div>
+                        <div class="modal" id="modal-escape-room">
+                            <div class="modal-header">
+                                <div class="title">Escape Room</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure porro tenetur placeat eum, eos voluptates molestiae at dolor maiores et iste molestias incidunt nam eligendi distinctio temporibus voluptatibus similique aperiam.
+                            </div>
+                        </div>
+                        <div class="modal" id="modal-twinstick">
+                            <div class="modal-header">
+                                <div class="title">Catinator</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure porro tenetur placeat eum, eos voluptates molestiae at dolor maiores et iste molestias incidunt nam eligendi distinctio temporibus voluptatibus similique aperiam.
+                            </div>
+                        </div>
+                        <div id="overlay"></div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="reveal fade-contact" id="contact">
+            <div class="contact">
+                <!-- <div class="contact-container">
+                    <p>Send me a message!</p>
+                    <form action="message.php">
+                        <div class="dbl-field">
+                            <div class="field">
+                                <input type="text" placeholder="Enter your name:">
+                                <i class='fas fa-user'></i>
+                            </div>
+                        </div>
+                        <div class="dbl-field">
+                            <div class="field">
+                                <input type="text" placeholder="Enter your email:">
+                                <i class='fas fa-envelope'></i>
+                            </div>
+                            <div class="field">
+                                <input type="text" placeholder="Enter your phonenumber:">
+                                <i class='fas fa-phone-alt'></i>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <textarea placeholder="Write your message:"></textarea>
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <div class="button-area">
+                            <button type="submit">Send Message</button>
+                            <span></span>
+                        </div>
+                    </form>                  
+                 </div> -->
             </div>
         </section>
     </main>

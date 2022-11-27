@@ -11,7 +11,6 @@ function reveal() {
         
         if (elementLeft < windowWidth) {
             reveals[i].classList.add("active");
-            console.log("active");
         }
     }
 }
@@ -96,22 +95,36 @@ closeModalButtons.forEach(button => {
 
 function openModal(modal) {
     if (modal == null) return;
-    modal.classList.add('on');
-    overlay.classList.add('on');
+    modal.classList.add('active');
+    overlay.classList.add('active');
 }
 
 function closeModal(modal) {
     if (modal == null) return;
-    modal.classList.remove('on');
-    overlay.classList.remove('on');
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
 }
 
 document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.key == 'Escape') {
-        const modals = document.querySelectorAll('.modal.on');
+        const modals = document.querySelectorAll('.modal.active');
         modals.forEach(modal => {
         closeModal(modal);
         })
     }
 };
+
+const collapsible = document.getElementsByClassName("collapsible");
+
+for (let i = 0; i < collapsible.length; i++) {
+    collapsible[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const content = this.nextElementSibling;
+        if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+    });
+}

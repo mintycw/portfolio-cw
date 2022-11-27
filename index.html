@@ -133,7 +133,53 @@
                                 <p>One of my first projects was a remake of the classic game Pong. I made this game using C# and it was my first time using Object-Orientated Programming.</p>
                                 <p>We were given four weeks the time to learn and implement OOP in our game. I learned a lot about OOP and I was proud of the result considering I was still relatively new to programming.</p>
                                 <p>There were still some minor bugs in the game with the collision. Unfortunately I could not fix them in time before the deadline.</p>
-                                <p>You can download and play the game <a class="here-a" href="#">HERE</a></p>
+                                <div class="collapsible-container">
+                                    <button type="button" class="collapsible">Some source code 👀:</button>
+                                    <div class="collapsible-content">
+                                        <pre>
+//Spawns new ball with random angle
+public void ResetBall() 
+{
+    BallRect = new Rectanglef(X, Y, Size, Size);
+    Random Random = new Random();
+    float Direction = Random.Next(20, 160) + ((Random.Next(0, 2) > 0) ? 180 : 0);
+    DirectionVector = AngleToDirection(Direction);
+    Speed = 400f;
+}
+
+//Collision
+
+//Top/Bottom collision
+if (ball.BallRect.Y > Bottom || ball.BallRect.Y < Top) 
+{
+    ball.DirectionVector.Y = -ball.DirectionVector.Y;
+}
+
+//Player 1 collision
+if (ball.BallRect.X < players[0].Xpos + players[0].PlayerSize.X + ball.Size) 
+{
+    if (ball.BallRect.Y < players[0].Ypos + players[0].PlayerSize.Y 
+    && ball.BallRect.Y + ball.Size > players[0].Ypos)
+    {
+        ball.DirectionVector.X = -ball.DirectionVector.X;
+        ball.Speed += 25;
+        ball.BallRect.X = players[0].Xpos + players[0].PlayerSize.X + ball.Size;
+    }
+}
+//Player 2 collision
+if (ball.BallRect.X + ball.Size > players[1].Xpos) 
+{
+    if (ball.BallRect.Y < players[1].Ypos + players[1].PlayerSize.Y + ball.Size 
+    && ball.BallRect.Y + ball.Size > players[1].Ypos)
+    {
+        ball.DirectionVector.X = -ball.DirectionVector.X;
+        ball.Speed += 25;
+        ball.BallRect.X = players[1].Xpos - ball.Size;
+    }
+}
+                                        </pre>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal" id="modal-dungeon-crawler">

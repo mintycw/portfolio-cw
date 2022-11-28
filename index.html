@@ -136,48 +136,52 @@
                                 <div class="collapsible-container">
                                     <button type="button" class="collapsible">Some source code 👀:</button>
                                     <div class="collapsible-content">
-                                        <pre>
-//Spawns new ball with random angle
-public void ResetBall() 
-{
-    BallRect = new Rectanglef(X, Y, Size, Size);
-    Random Random = new Random();
-    float Direction = Random.Next(20, 160) + ((Random.Next(0, 2) > 0) ? 180 : 0);
-    DirectionVector = AngleToDirection(Direction);
-    Speed = 400f;
-}
-
-//Collision
-
-//Top/Bottom collision
-if (ball.BallRect.Y > Bottom || ball.BallRect.Y < Top) 
-{
-    ball.DirectionVector.Y = -ball.DirectionVector.Y;
-}
-
-//Player 1 collision
-if (ball.BallRect.X < players[0].Xpos + players[0].PlayerSize.X + ball.Size) 
-{
-    if (ball.BallRect.Y < players[0].Ypos + players[0].PlayerSize.Y 
-    && ball.BallRect.Y + ball.Size > players[0].Ypos)
+                                        <div class="code-container" >
+                                            <pre>
+    <-- From Ball Class  -->
+    
+    //Spawns new ball with random angle
+    public void ResetBall() 
     {
-        ball.DirectionVector.X = -ball.DirectionVector.X;
-        ball.Speed += 25;
-        ball.BallRect.X = players[0].Xpos + players[0].PlayerSize.X + ball.Size;
+        BallRect = new Rectanglef(X, Y, Size, Size);
+        Random Random = new Random();
+        float Direction = Random.Next(20, 160) + ((Random.Next(0, 2) > 0) ? 180 : 0);
+        DirectionVector = AngleToDirection(Direction);
+        Speed = 400f;
     }
-}
-//Player 2 collision
-if (ball.BallRect.X + ball.Size > players[1].Xpos) 
-{
-    if (ball.BallRect.Y < players[1].Ypos + players[1].PlayerSize.Y + ball.Size 
-    && ball.BallRect.Y + ball.Size > players[1].Ypos)
+    
+    <-- From Collision Class -->
+    
+    //Top/Bottom collision
+    if (ball.BallRect.Y > Bottom || ball.BallRect.Y < Top) 
     {
-        ball.DirectionVector.X = -ball.DirectionVector.X;
-        ball.Speed += 25;
-        ball.BallRect.X = players[1].Xpos - ball.Size;
+        ball.DirectionVector.Y = -ball.DirectionVector.Y;
     }
-}
-                                        </pre>
+    
+    //Player 1 collision
+    if (ball.BallRect.X < players[0].Xpos + players[0].PlayerSize.X + ball.Size) 
+    {
+        if (ball.BallRect.Y < players[0].Ypos + players[0].PlayerSize.Y 
+        && ball.BallRect.Y + ball.Size > players[0].Ypos)
+        {
+            ball.DirectionVector.X = -ball.DirectionVector.X;
+            ball.Speed += 25;
+            ball.BallRect.X = players[0].Xpos + players[0].PlayerSize.X + ball.Size;
+        }
+    }
+    //Player 2 collision
+    if (ball.BallRect.X + ball.Size > players[1].Xpos) 
+    {
+        if (ball.BallRect.Y < players[1].Ypos + players[1].PlayerSize.Y + ball.Size 
+        && ball.BallRect.Y + ball.Size > players[1].Ypos)
+        {
+            ball.DirectionVector.X = -ball.DirectionVector.X;
+            ball.Speed += 25;
+            ball.BallRect.X = players[1].Xpos - ball.Size;
+        }
+    }
+                                            </pre>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +192,19 @@ if (ball.BallRect.X + ball.Size > players[1].Xpos)
                                 <button data-close-button class="close-button">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <p>For my second Unity project we had to recreate the original Legend of Zelda</p>
+                                <p>One of my first unity projects was the remake of the original Legend of Zelda.</p>
+                                <p>We were supposed to get four weeks for this project, however due to covid we were only given three weeks to recreate the game from scratch.</p>
+                                <p>Unfortunately I wasn't able to finish the project with the shortened deadline.</p>
+                                <div class="collapsible-container">
+                                    <button type="button" class="collapsible">Gameplay Video 📽️:</button>
+                                    <div class="collapsible-content flex">
+                                        <div>
+                                            <video class="projects-video" controls muted>
+                                                <source src="public/img/dungeoncrawler-gameplay.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal" id="modal-escape-room">
@@ -197,7 +213,67 @@ if (ball.BallRect.X + ball.Size > players[1].Xpos)
                                 <button data-close-button class="close-button">&times;</button>
                             </div>
                             <div class="modal-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure porro tenetur placeat eum, eos voluptates molestiae at dolor maiores et iste molestias incidunt nam eligendi distinctio temporibus voluptatibus similique aperiam.
+                                <p>My next unity project would be an escape room.</p>
+                                <p>For this game we were given two weeks the time and we had to work in duo's</p>
+                                <p>We made a short and simple game that was bugless and we were both proud of it.</p>
+                                <div class="collapsible-container">
+                                    <button type="button" class="collapsible">Gameplay Video 📽️:</button>
+                                    <div class="collapsible-content flex">
+                                        <div>
+                                            <video class="projects-video" controls muted>
+                                                <source src="public/img/escaperoom-gameplayvideo.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapsible-container">
+                                    <button type="button" class="collapsible">Code peak 👀:</button>
+                                    <div class="collapsible-content">
+                                        <div class="code-container" >
+                                            <pre>
+//Picks up interactables
+private void PickUp()
+{
+    equipped = true;
+    slotFull = true;
+
+    //Make item child of camera
+    transform.SetParent(container);
+    transform.localPosition = Vector3.zero;
+    transform.localRotation = Quaternion.Euler(Vector3.zero);
+    transform.localScale = Vector3.one;
+
+    //Enable kinematic RigidBody and make BoxCollider a trigger
+    rigidBody.isKinematic = true;
+    collider.isTrigger = true;
+    rigidBody.freezeRotation = true;
+}
+
+//Drops interactables
+public void Drop()
+{
+    equipped = false;
+    slotFull = false;
+
+    //Set parent to null
+    transform.SetParent(null);
+
+    //Object has same momentum with player
+    rigidBody.velocity = player.GetComponent<Rigidbody>().velocity;
+
+    //AddForce
+    rigidBody.AddForce(fpsCam.forward * dropForwardForce, ForceMode.Impulse);
+    rigidBody.AddForce(fpsCam.up * dropUpwardForce, ForceMode.Impulse);
+
+    //Disable kinematic RigidBody and make BoxCollider normal
+    rigidBody.isKinematic = false;
+    collider.isTrigger = false;
+    rigidBody.freezeRotation = false;
+}
+                                            </pre>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal" id="modal-twinstick">

@@ -518,7 +518,7 @@ nav {
 .project-img {
     border-radius: 5px;
     object-fit: contain;
-    height: 150px;
+    height: 175px;
 }
 
 *, *::before, *::after {
@@ -614,29 +614,39 @@ nav {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     color: white;
+    border-radius: 10px;
+
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
 }
 
 .collapsible.active {
     max-height: 200px;
-    overflow-y: scroll;
-}
-
-/* Contact */
-
-.contact {
-    min-width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: black;
 }
 
 .here-a {
     font-weight: bold;
 }
 
+.projects-video {
+    height: 150px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.code-container {
+    max-height: 200px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+.code-container::-webkit-scrollbar {
+    display: none;
+}
 /* .contact-container {
     width: 720px;
     background-color: white;
